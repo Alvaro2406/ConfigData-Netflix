@@ -1,0 +1,230 @@
+components:
+  schemas:
+    Suscripciones:
+      type: object
+      properties:
+        id_subscripcion:
+          type: integer
+        cuenta_subscripcion:
+          type: integer
+        fecha_inicio:
+          type: string
+        fecha_fin:
+          type: string
+        plan_suscripcion:
+          type: integer
+    Planes:
+      type: object
+      properties:
+        id_plan:
+          type: integer
+        nombre_plan:
+          type: string
+        precio:
+          type: number
+info:
+  description: API para gestionar productos
+  title: API de Productos
+  version: 1.0.0
+openapi: 3.0.3
+paths:
+  /suscripciones:
+    get:
+      operationId: suscripciones_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Suscripciones'
+                type: array
+                x-content-type: application/json
+          description: Lista de Suscripciones
+      summary: Obtener suscripciones
+      tags:
+      - Suscripciones
+      x-openapi-router-controller: swagger_server.controllers.suscripciones_controller
+    post:
+      operationId: suscripciones_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Suscripciones'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suscripciones'
+          description: Suscripciones creado correctamente
+      summary: Crear Suscripciones
+      tags:
+      - Suscripciones
+      x-openapi-router-controller: swagger_server.controllers.suscripciones_controller
+  /suscripciones/{id_subscripcion_}:
+    delete:
+      operationId: suscripciones_id_subscripcion_delete
+      parameters:
+      - explode: false
+        in: path
+        name: id_subscripcion_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: Suscripciones eliminado correctamente
+      summary: Eliminar suscripciones por ID
+      tags:
+      - Suscripciones
+      x-openapi-router-controller: swagger_server.controllers.suscripciones_controller
+    get:
+      operationId: suscripciones_id_subscripcion_get
+      parameters:
+      - explode: false
+        in: path
+        name: id_subscripcion_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suscripciones'
+          description: Suscripciones encontrado
+        '404':
+          description: Suscripciones no encontrado
+      summary: Obtener suscripciones por su id
+      tags:
+      - Suscripciones
+      x-openapi-router-controller: swagger_server.controllers.suscripciones_controller
+    put:
+      operationId: suscripciones_id_subscripcion_put
+      parameters:
+      - explode: false
+        in: path
+        name: id_subscripcion_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Suscripciones'
+        required: true
+      responses:
+        '200':
+          description: Suscripciones actualizado correctamente
+      summary: Actualizar suscripciones por ID
+      tags:
+      - Suscripciones
+      x-openapi-router-controller: swagger_server.controllers.suscripciones_controller
+  /planes:
+    get:
+      operationId: planes_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Planes'
+                type: array
+                x-content-type: application/json
+          description: Lista de Planes
+      summary: Obtener planes
+      tags:
+      - Planes
+      x-openapi-router-controller: swagger_server.controllers.planes_controller
+    post:
+      operationId: planes_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planes'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planes'
+          description: Planes creado correctamente
+      summary: Crear Planes
+      tags:
+      - Planes
+      x-openapi-router-controller: swagger_server.controllers.planes_controller
+  /planes/{id_plan_}:
+    delete:
+      operationId: planes_id_plan_delete
+      parameters:
+      - explode: false
+        in: path
+        name: id_plan_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: Planes eliminado correctamente
+      summary: Eliminar planes por ID
+      tags:
+      - Planes
+      x-openapi-router-controller: swagger_server.controllers.planes_controller
+    get:
+      operationId: planes_id_plan_get
+      parameters:
+      - explode: false
+        in: path
+        name: id_plan_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planes'
+          description: Planes encontrado
+        '404':
+          description: Planes no encontrado
+      summary: Obtener planes por su id
+      tags:
+      - Planes
+      x-openapi-router-controller: swagger_server.controllers.planes_controller
+    put:
+      operationId: planes_id_plan_put
+      parameters:
+      - explode: false
+        in: path
+        name: id_plan_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planes'
+        required: true
+      responses:
+        '200':
+          description: Planes actualizado correctamente
+      summary: Actualizar planes por ID
+      tags:
+      - Planes
+      x-openapi-router-controller: swagger_server.controllers.planes_controller

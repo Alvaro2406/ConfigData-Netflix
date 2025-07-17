@@ -1,0 +1,228 @@
+components:
+  schemas:
+    Cuentas:
+      type: object
+      properties:
+        id_cuenta:
+          type: integer
+        nombre_usuario:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    Perfiles:
+      type: object
+      properties:
+        id_perfil:
+          type: integer
+        nombre_perfil:
+          type: string
+        cuenta:
+          type: integer
+info:
+  description: API para gestionar productos
+  title: API de Productos
+  version: 1.0.0
+openapi: 3.0.3
+paths:
+  /cuentas:
+    get:
+      operationId: cuentas_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Cuentas'
+                type: array
+                x-content-type: application/json
+          description: Lista de Cuentas
+      summary: Obtener cuentas
+      tags:
+      - Cuentas
+      x-openapi-router-controller: swagger_server.controllers.cuentas_controller
+    post:
+      operationId: cuentas_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cuentas'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cuentas'
+          description: Cuentas creado correctamente
+      summary: Crear Cuentas
+      tags:
+      - Cuentas
+      x-openapi-router-controller: swagger_server.controllers.cuentas_controller
+  /cuentas/{id_cuenta_}:
+    delete:
+      operationId: cuentas_id_cuenta_delete
+      parameters:
+      - explode: false
+        in: path
+        name: id_cuenta_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: Cuentas eliminado correctamente
+      summary: Eliminar cuentas por ID
+      tags:
+      - Cuentas
+      x-openapi-router-controller: swagger_server.controllers.cuentas_controller
+    get:
+      operationId: cuentas_id_cuenta_get
+      parameters:
+      - explode: false
+        in: path
+        name: id_cuenta_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cuentas'
+          description: Cuentas encontrado
+        '404':
+          description: Cuentas no encontrado
+      summary: Obtener cuentas por su id
+      tags:
+      - Cuentas
+      x-openapi-router-controller: swagger_server.controllers.cuentas_controller
+    put:
+      operationId: cuentas_id_cuenta_put
+      parameters:
+      - explode: false
+        in: path
+        name: id_cuenta_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cuentas'
+        required: true
+      responses:
+        '200':
+          description: Cuentas actualizado correctamente
+      summary: Actualizar cuentas por ID
+      tags:
+      - Cuentas
+      x-openapi-router-controller: swagger_server.controllers.cuentas_controller
+  /perfiles:
+    get:
+      operationId: perfiles_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Perfiles'
+                type: array
+                x-content-type: application/json
+          description: Lista de Perfiles
+      summary: Obtener perfiles
+      tags:
+      - Perfiles
+      x-openapi-router-controller: swagger_server.controllers.perfiles_controller
+    post:
+      operationId: perfiles_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Perfiles'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Perfiles'
+          description: Perfiles creado correctamente
+      summary: Crear Perfiles
+      tags:
+      - Perfiles
+      x-openapi-router-controller: swagger_server.controllers.perfiles_controller
+  /perfiles/{id_perfil_}:
+    delete:
+      operationId: perfiles_id_perfil_delete
+      parameters:
+      - explode: false
+        in: path
+        name: id_perfil_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: Perfiles eliminado correctamente
+      summary: Eliminar perfiles por ID
+      tags:
+      - Perfiles
+      x-openapi-router-controller: swagger_server.controllers.perfiles_controller
+    get:
+      operationId: perfiles_id_perfil_get
+      parameters:
+      - explode: false
+        in: path
+        name: id_perfil_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Perfiles'
+          description: Perfiles encontrado
+        '404':
+          description: Perfiles no encontrado
+      summary: Obtener perfiles por su id
+      tags:
+      - Perfiles
+      x-openapi-router-controller: swagger_server.controllers.perfiles_controller
+    put:
+      operationId: perfiles_id_perfil_put
+      parameters:
+      - explode: false
+        in: path
+        name: id_perfil_
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Perfiles'
+        required: true
+      responses:
+        '200':
+          description: Perfiles actualizado correctamente
+      summary: Actualizar perfiles por ID
+      tags:
+      - Perfiles
+      x-openapi-router-controller: swagger_server.controllers.perfiles_controller
