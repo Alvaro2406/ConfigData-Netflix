@@ -1,0 +1,113 @@
+components:
+  schemas:
+    Comentarios:
+      type: object
+      properties:
+        id_user:
+          type: string
+        id_contenido:
+          type: string
+        comentario:
+          type: string
+        id_comentario:
+          type: string
+info:
+  description: API para microservicios MongoDB
+  title: API MongoDB
+  version: 1.0.0
+openapi: 3.0.3
+paths:
+  /comentarios:
+    get:
+      operationId: comentarios_get
+      responses:
+        '200':
+          description: Lista de Comentarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comentarios'
+                x-content-type: application/json
+      summary: Obtener comentarios
+      tags:
+        - Comentarios
+      x-openapi-router-controller: swagger_server.controllers.comentarios_controller
+    post:
+      operationId: comentarios_post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comentarios'
+      responses:
+        '201':
+          description: Comentarios creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comentarios'
+      summary: Crear Comentarios
+      tags:
+        - Comentarios
+      x-openapi-router-controller: swagger_server.controllers.comentarios_controller
+  /comentarios/{id_comentario_}:
+    get:
+      operationId: comentarios_get_by_id_comentario
+      parameters:
+        - name: id_comentario_
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Comentarios encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comentarios'
+        '404':
+          description: No encontrado
+      summary: Obtener comentarios por id_comentario
+      tags:
+        - Comentarios
+      x-openapi-router-controller: swagger_server.controllers.comentarios_controller
+    delete:
+      operationId: comentarios_delete_by_id_comentario
+      parameters:
+        - name: id_comentario_
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Eliminado correctamente
+      summary: Eliminar comentarios por id_comentario
+      tags:
+        - Comentarios
+      x-openapi-router-controller: swagger_server.controllers.comentarios_controller
+    put:
+      operationId: comentarios_update_by_id_comentario
+      parameters:
+        - name: id_comentario_
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comentarios'
+      responses:
+        '200':
+          description: Actualizado correctamente
+      summary: Actualizar comentarios por id_comentario
+      tags:
+        - Comentarios
+      x-openapi-router-controller: swagger_server.controllers.comentarios_controller
