@@ -1,0 +1,124 @@
+components:
+  schemas:
+    Compras:
+      type: object
+      properties:
+        id_compra:
+          type: integer
+        cuenta_compra:
+          type: string
+        producto_compra:
+          type: string
+        timestamp:
+          type: string
+info:
+  description: API para gestionar productos
+  title: API de Productos
+  version: 1.0.0
+openapi: 3.0.3
+
+paths:
+  /compras:
+    get:
+      operationId: compras_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Compras'
+                x-content-type: application/json
+          description: Lista de Compras
+      summary: Obtener compras
+      tags:
+        - Compras
+      x-openapi-router-controller: swagger_server.controllers.compras_controller
+
+    post:
+      operationId: compras_post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Compras'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compras'
+          description: Compras creado correctamente
+      summary: Crear Compras
+      tags:
+        - Compras
+      x-openapi-router-controller: swagger_server.controllers.compras_controller
+
+  /compras/{id_compra_}:
+    delete:
+      operationId: compras_id_compra_delete
+      parameters:
+        - name: id_compra_
+          in: path
+          required: true
+          explode: false
+          style: simple
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Compras eliminado correctamente
+      summary: Eliminar compras por ID
+      tags:
+        - Compras
+      x-openapi-router-controller: swagger_server.controllers.compras_controller
+
+    get:
+      operationId: compras_id_compra_get
+      parameters:
+        - name: id_compra_
+          in: path
+          required: true
+          explode: false
+          style: simple
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compras'
+          description: Compras encontrado
+        '404':
+          description: Compras no encontrado
+      summary: Obtener compras por su ID
+      tags:
+        - Compras
+      x-openapi-router-controller: swagger_server.controllers.compras_controller
+
+    put:
+      operationId: compras_id_compra_put
+      parameters:
+        - name: id_compra_
+          in: path
+          required: true
+          explode: false
+          style: simple
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Compras'
+      responses:
+        '200':
+          description: Compras actualizado correctamente
+      summary: Actualizar compras por ID
+      tags:
+        - Compras
+      x-openapi-router-controller: swagger_server.controllers.compras_controller
