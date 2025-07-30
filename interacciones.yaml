@@ -59,7 +59,7 @@ paths:
       tags:
       - Nodo_perfil
       x-openapi-router-controller: swagger_server.controllers.nodo_perfil_controller
-  /nodo_perfil/{id}:
+  /nodo_perfil{id}:
     delete:
       operationId: nodo_perfil_delete
       parameters:
@@ -93,27 +93,6 @@ paths:
         '404':
           description: Nodo no encontrado
       summary: Obtener nodo_perfil por ID
-      tags:
-      - Nodo_perfil
-      x-openapi-router-controller: swagger_server.controllers.nodo_perfil_controller
-    put:
-      operationId: nodo_perfil_put
-      parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Nodo_perfil'
-        required: true
-      responses:
-        '200':
-          description: Nodo actualizado
-      summary: Actualizar nodo_perfil por ID
       tags:
       - Nodo_perfil
       x-openapi-router-controller: swagger_server.controllers.nodo_perfil_controller
@@ -152,7 +131,7 @@ paths:
       tags:
       - Nodo_contenido
       x-openapi-router-controller: swagger_server.controllers.nodo_contenido_controller
-  /nodo_contenido/{id}:
+  /nodo_contenido{id}:
     delete:
       operationId: nodo_contenido_delete
       parameters:
@@ -186,27 +165,6 @@ paths:
         '404':
           description: Nodo no encontrado
       summary: Obtener nodo_contenido por ID
-      tags:
-      - Nodo_contenido
-      x-openapi-router-controller: swagger_server.controllers.nodo_contenido_controller
-    put:
-      operationId: nodo_contenido_put
-      parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Nodo_contenido'
-        required: true
-      responses:
-        '200':
-          description: Nodo actualizado
-      summary: Actualizar nodo_contenido por ID
       tags:
       - Nodo_contenido
       x-openapi-router-controller: swagger_server.controllers.nodo_contenido_controller
@@ -246,37 +204,13 @@ paths:
       tags:
       - InteraccionRelation
       x-openapi-router-controller: swagger_server.controllers.interaccion_controller
-  /interaccion/{source}/{destination}:
-    delete:
-      operationId: interaccion_delete
-      parameters:
-      - in: path
-        name: source
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: destination
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Relación eliminada
-      summary: Eliminar relación entre nodos
-      tags:
-      - InteraccionRelation
-      x-openapi-router-controller: swagger_server.controllers.interaccion_controller
+
+  /interaccion/{id}:
     get:
-      operationId: interaccion_getByNodes
+      operationId: interaccion_id_get
       parameters:
       - in: path
-        name: source
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: destination
+        name: id
         required: true
         schema:
           type: string
@@ -289,33 +223,25 @@ paths:
           description: Relación encontrada
         '404':
           description: Relación no encontrada
-      summary: Obtener relación entre nodos
+      summary: Obtener relación por ID
       tags:
       - InteraccionRelation
       x-openapi-router-controller: swagger_server.controllers.interaccion_controller
-    put:
-      operationId: interaccion_put
+    delete:
+      operationId: interaccion_id_delete
       parameters:
-      - in: path
-        name: source
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: destination
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InteraccionRelation'
-        required: true
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
       responses:
-        '200':
-          description: Relación actualizada
-      summary: Actualizar relación entre nodos
+        '204':
+          description: Relación eliminada correctamente
+        '404':
+          description: Relación no encontrada
+      summary: Eliminar relación por ID
       tags:
-      - InteraccionRelation
+        - InteraccionRelation
       x-openapi-router-controller: swagger_server.controllers.interaccion_controller
+
