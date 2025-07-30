@@ -14,9 +14,9 @@ components:
       type: object
       properties:
         source:
-          type: string
+          type: integer
         destination:
-          type: string
+          type: integer
 
 info:
   description: API para gestionar nodos y relaciones
