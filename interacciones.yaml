@@ -59,7 +59,7 @@ paths:
       tags:
       - Nodo_perfil
       x-openapi-router-controller: swagger_server.controllers.nodo_perfil_controller
-  /nodo_perfil{id}:
+  /nodo_perfil/{id}:
     delete:
       operationId: nodo_perfil_delete
       parameters:
@@ -131,7 +131,7 @@ paths:
       tags:
       - Nodo_contenido
       x-openapi-router-controller: swagger_server.controllers.nodo_contenido_controller
-  /nodo_contenido{id}:
+  /nodo_contenido/{id}:
     delete:
       operationId: nodo_contenido_delete
       parameters:
