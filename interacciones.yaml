@@ -76,7 +76,7 @@ paths:
       - Nodo_perfil
       x-openapi-router-controller: swagger_server.controllers.nodo_perfil_controller
     get:
-      operationId: nodo_perfil_getById
+      operationId: nodo_perfil_id_get
       parameters:
       - in: path
         name: id
@@ -148,7 +148,7 @@ paths:
       - Nodo_contenido
       x-openapi-router-controller: swagger_server.controllers.nodo_contenido_controller
     get:
-      operationId: nodo_contenido_getById
+      operationId: nodo_contenido_id_get
       parameters:
       - in: path
         name: id
